@@ -80,4 +80,4 @@ Para deploy windows:
   3 - Após todos os módulos instalados via node, rodar o comando **ng build --prod**. Dentro da pasta da aplicação será criada 
       uma subpasta com o nome **dist** seu conteúdo é o necessário para o deploy da aplicação.
 
-![Screenshot](1-Tela da cadastro.png)
+![Screenshot-1](https://github.com/hedu59/Projeto-Seplag/blob/master/1-Tela%20da%20cadastro.png)
