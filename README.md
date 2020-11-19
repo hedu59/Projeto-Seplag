@@ -80,4 +80,13 @@ Para deploy windows:
   3 - Após todos os módulos instalados via node, rodar o comando **ng build --prod**. Dentro da pasta da aplicação será criada 
       uma subpasta com o nome **dist** seu conteúdo é o necessário para o deploy da aplicação.
 
+
+**IMAGENS**
 ![Screenshot-1](https://github.com/hedu59/Projeto-Seplag/blob/master/1-Tela%20da%20cadastro.png)
+![Screenshot-2](https://github.com/hedu59/Projeto-Seplag/blob/master/2-Tela%20da%20processos-servidores%20cadastrados.png)
+![Screenshot-3](https://github.com/hedu59/Projeto-Seplag/blob/master/3-Tela%20de%20anexo%20de%20documentos.png)
+![Screenshot-4](https://github.com/hedu59/Projeto-Seplag/blob/master/4-Tela%20de%20Cadastro%20de%20documentos.png)
+![Screenshot-5](https://github.com/hedu59/Projeto-Seplag/blob/master/5-Tela%20de%20Processo%20e%20documentos.png)
+![Screenshot-6](https://github.com/hedu59/Projeto-Seplag/blob/master/5-Tela%20de%20visualização%20de%20documento%20anexado..png)
+![Screenshot-7](https://github.com/hedu59/Projeto-Seplag/blob/master/6-Tela%20e%20tramitação%20do%20processo.png)
+![Screenshot-8](https://github.com/hedu59/Projeto-Seplag/blob/master/7-Tela%20histórico%20de%20tramitação.png)
