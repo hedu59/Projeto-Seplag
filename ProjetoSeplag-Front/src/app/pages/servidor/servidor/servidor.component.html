@@ -1,0 +1,126 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Aguarde... </p>
+</ngx-spinner>
+
+<div class="card" style="padding: 1%;">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title"> Servidores / Processo de Benefício</h4>
+            </div>
+            <div class="col-md-6">
+                <div style="float: right;">
+                    <button class="btn btn-success" (click)="AbrirModalCadastroServidor(content)"><i
+                            class="fa fa-plus"></i>Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-stripped">
+                    <thead class=" text-primary" style="background-color: rgb(251, 251, 246);">
+                        <th>
+                            CPF
+                        </th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Orgão
+                        </th>
+                        <th>
+                            Matricula
+                        </th>
+                        <th>
+                            Ações
+                        </th>
+
+                    </thead>
+                    <tbody>
+                        <tr                                   
+                            *ngFor="let item of servidores | slice: (page-2) * pageSize : (page-1) * pageSize + pageSize">
+
+                            <td>{{ item.CPF }}</td>
+                            <th scope="row">{{ item.Nome }}</th>
+                            <td>{{ item.Orgao }}</td>
+                            <td>{{ item.Matricula }}</td>
+                            <td>
+                                <button class="btn btn-success btn-sm" (click)="DetalhesServidor(item.Id)" placement="top" ngbTooltip="Acessar Dados do Processo">
+                                    <i class="fa fa-arrow-right"></i>
+                                </button>
+                            </td>
+                       </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="length" (pageChange)="ObterServidores(page-1)" >
+        </ngb-pagination>
+
+
+    </div>
+</div>
+
+
+<!--MODAL INCLUIR SERVIDOR-->
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Incluir Benefício Servidor</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form [formGroup]="formServidor">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="fone">Nome <span class="campo_obrigatorio">*</span></label>
+                    <input type="text" class="form-control" formControlName="Nome" required autofocus="true"
+                        maxlength=80 oninput="this.value = this.value.toUpperCase()">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="fone">CPF <span class="campo_obrigatorio">*</span></label>
+                    <input type="text" class="form-control" formControlName="CPF" required autofocus="true"
+                        maxlength=11>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6  form-group">
+                    <label for="fone">Matricula <span class="campo_obrigatorio">*</span></label>
+                    <input type="text" class="form-control" formControlName="Matricula" required autofocus="true"
+                        maxlength=50>
+                </div>
+                <div class="col-md-6  form-group">
+                    <label for="tipo">Orgão</label>
+                    <select class="form-control" formControlName="Orgao">
+                        <option value="SEPLAG">SEPLAG</option>
+                        <option value="SEFAZ">SEFAZ</option>
+                        <option value="SEDUC">SEDUC</option>
+                        <option value="SESA">SESA</option>
+                        <option value="SSPDS">SSPDS</option>
+                        <option value="SEINFRA">SEINFRA</option>
+                        <option value="SEMA">SEMA</option>
+                        <option value="SETUR">SETUR</option>
+                        <option value="SRH">SRH</option>
+                    </select>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary btn-rounded" (click)="CriarServidor()"
+            [disabled]="formServidor.invalid"> <i class="icofont-check"></i> Salvar</button>
+        <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('Save click')"> <i
+                class="icofont-close-circled"></i> Fechar </button>
+    </div>
+</ng-template>
+
+<hr>
+<!--FIM MODAL INCLUIR SERVIDOR-->

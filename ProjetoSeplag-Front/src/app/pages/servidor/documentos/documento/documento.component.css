@@ -1,0 +1,7 @@
+#p{
+    font-size: 10;
+    color: #000;
+}
+.row{
+    display: grid;
+}

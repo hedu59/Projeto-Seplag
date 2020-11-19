@@ -1,0 +1,239 @@
+<div class="row">
+    <div class="card" style="padding-left: 2%;">
+
+        <div class="row" style="display: flex;">
+            <div class="col-md-6">
+                <h4 class="card-title"> Documentos / Processo de Benefício</h4>
+            </div>
+            <div class="col-md-6">
+                <div style="float: right; padding-right: 20px;">
+                    <button class="btn btn-primary" (click)="AbrirModalTramitacao(content3)"><i class="fa fa-arrow-right"></i>
+                        Tramitar Processo
+                    </button>
+                    <button class="btn btn-success" (click)="AbrirModalAnexoDocumento(content)"><i
+                            class="fa fa-plus"></i>
+                        Anexar Peça
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-stripped">
+                        <thead class=" text-primary" style="background-color: rgb(251, 251, 246);">
+
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Categoria
+                            </th>
+
+                            <th>
+                                Ações
+                            </th>
+
+
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of arquivos ">
+
+                                <th scope="row">{{ item.FileName }}</th>
+                                <td>{{ item.CategoriaDescicao }}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-default" placement="top" ngbTooltip="Visualizar"
+                                        (click)="AbrirModalDocumento(content2, item.FileAsBase64, item.FileName)"><i
+                                            class="fa fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL INCLUIR DOCUMENTO-->
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Incluir Documento ao Processo</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.close('Save click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formArquivo" style="margin-top:10px">
+            <div class="col-md-12">
+
+
+                <label>Anexo(s)</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" (change)="ValidarArquivos($event)" formControlName="Arquivo">
+                    <!--<input type="hidden" name="fileHidden" formControlName="Arquivo" />-->
+                    <label class="custom-file-label" id="file"> Selecionar arquivos...</label>
+                </div>
+            </div>
+            <div class="row" style="padding-left: 13px;">
+                <div class="col-md-12  form-group">
+                    <label for="tipo">Categoria</label>
+                    <select class="form-control" formControlName="Categoria">
+                        <option value="1">IDENTIFICAÇÃO</option>
+                        <option value="2">VIDA FUNCIONAL</option>
+                        <option value="3">CONTAGEM DE TEMPO</option>
+                        <option value="4">REMUNERAÇÃO/PROVENTOS</option>
+                    </select>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-primary btn-rounded btn-sm" [disabled]="formArquivo.invalid"
+            (click)="SalvarAnexos()"> <i class="icofont-check"></i> Salvar
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-rounded btn-sm" (click)="modal.close('Save click')"> <i
+                class="icofont-close-circled"></i> Fechar
+        </button>
+    </div>
+</ng-template>
+<!--FIM MODAL VISUALIZAR DOCUMENTO-->
+
+<!-- MODAL VISUALIZAR DOCUMENTO-->
+<ng-template #content2 let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{NomeDocumento}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.close('Save click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="mb">
+            <button (click)="rotate(-90)" class="btn btn-sm btn-default" placement="top" matTooltip="Girar a esqueda">
+                <i class="fa fa-undo"></i>
+            </button>
+            <button (click)="rotate(90)" class="btn btn-sm btn-default" placement="top" ngbTooltip="Girar a direita">
+                <i class="fa fa-repeat"></i>
+            </button>
+            <button (click)="incrementZoom(-0.1)" class="btn btn-sm btn-default" placement="top" matTooltip="Diminuir">
+                <i class="fa fa-search-minus"></i>
+            </button>
+
+            <button (click)="incrementZoom(0.1)" class="btn btn-sm btn-default" placement="top" matTooltip="Aumentar">
+                <i class="fa fa-search-plus"></i>
+            </button>
+        </div>
+        <div style="height: 400px; overflow-y: auto; border:gray; border-style: double;">
+
+            <pdf-viewer [src]="pdfSrc" [(page)]="page" [rotation]="rotation" [original-size]="originalSize"
+                [show-all]="showAll" [fit-to-page]="fitToPage" [zoom]="zoom" [zoom-scale]="zoomScale"
+                [stick-to-page]="stickToPage" [render-text]="renderText" [external-link-target]="'blank'"
+                [autoresize]="autoresize"></pdf-viewer>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+
+        <button type="button" class="btn btn-outline-danger btn-rounded" (click)="modal.close('Save click')"> <i
+                class="icofont-close-circled"></i> Fechar
+        </button>
+    </div>
+</ng-template>
+<!--FIM MODAL VISUALIZAR DOCUMENTO-->
+
+<!-- MODAL VISUALIZAR TRAMITACAO-->
+<ng-template #content3 let-modal>
+    <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.close('Save click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" style="padding: 27px;">
+
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1">
+                <a ngbNavLink>Histórico Tramitação</a>
+                <ng-template ngbNavContent>
+                    <div class="row">
+                        <div class="table">
+                            <table class="table table-stripped" style="text-align: left;">
+                                <thead class=" text-primary"
+                                    style="background-color: rgb(251, 251, 246);text-align: left;">
+                                    <th>
+                                        Data Movimentação
+                                    </th>
+                                    <th>
+                                        Setor Origem
+                                    </th>
+                                    <th>
+                                        Setor Destino
+                                    </th>
+                                    <th>
+                                        Usuário
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of tramitacao">
+                                        <th scope="row">{{ item.DataTramitacao | date }}</th>
+                                        <th scope="row">{{ item.SetorOrigemDescricao }}</th>
+                                        <th scope="row">{{ item.SetorDestinoDescricao }}</th>
+                                        <th scope="row">{{ item.UsuarioMovimentacao }}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+                <a ngbNavLink>Realizar Tramitação</a>
+                <ng-template ngbNavContent>
+                    <form [formGroup]="formTramite">
+                        <div class="col-md-6  form-group">
+                            <h5>Setor Atual: <strong>{{setorAtualDescricao}}</strong></h5>
+                        </div>
+                        <div class="row" style="display: flex; margin-left: 0%;">
+
+                            <div class="col-md-6  form-group">
+                                <label for="tipo">Setor Destino</label>
+                                <select class="form-control" formControlName="SetorDestino">
+                                    <option value="1">Setorial Servidor</option>
+                                    <option value="2">CPrev Gestor</option>
+                                    <option value="3">Secretario SEPLAG</option>
+                                    <option value="4">PGE Analise</option>
+                                    <option value="5">TCE Gestor</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6" style="margin-top:24px">
+                                <button type="submit" class="btn btn-outline-success btn-rounded btn-sm"
+                                    (click)="ConfirmarTramitacao()" [disabled]="formTramite.invalid"> <i
+                                        class="icofont-check"></i> Confirmar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+            </li>
+        </ul>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-primary btn-rounded btn-sm" (click)="AbrirAbaTramitacao()"> <i
+                class="icofont-check"></i> Realizar Tramitação
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-rounded btn-sm" (click)="modal.close('Save click')"> <i
+                class="icofont-close-circled"></i> Fechar
+        </button>
+    </div>
+</ng-template>
+<!--FIM MODAL VISUALIZAR TRAMITACAO-->

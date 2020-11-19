@@ -1,0 +1,44 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white"> Aguarde... </p>
+</ngx-spinner>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Detalhes/Arquivos</a>
+    <ng-template ngbNavContent>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="icon-big text-left icon-warning">
+                    <i class="nc-icon nc-cloud-upload-94 text-warning"></i>
+                  </div>
+                </div>
+                <div class="col-md-12" style="padding-left: 2%;">
+                  <div class="numbers" *ngIf="servidorModel">
+                    <p class="card-category">CPF: {{servidorModel.CPF| CPF}}</p>
+                    <p class="card-title">{{servidorModel.Nome}}
+                    <p>
+                  </div>
+                  <app-documento [dadosPai]="tramitacoes" (respostaFamilia)="reciverFeedback($event)"></app-documento>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats" *ngIf="servidorModel">
+                <i class="fa fa-id-card-o"></i> {{servidorModel.Orgao}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2">
+
+</div>
