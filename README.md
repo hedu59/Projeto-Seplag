@@ -79,3 +79,5 @@ Para deploy windows:
   2 - Apontar o caminho da API na classe **base-service.ts** no método **getHostApi()**
   3 - Após todos os módulos instalados via node, rodar o comando **ng build --prod**. Dentro da pasta da aplicação será criada 
       uma subpasta com o nome **dist** seu conteúdo é o necessário para o deploy da aplicação.
+
+![Screenshot](1-Tela da cadastro.png)
