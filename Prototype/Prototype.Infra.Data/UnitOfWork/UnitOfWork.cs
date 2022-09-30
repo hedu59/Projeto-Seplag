@@ -5,6 +5,7 @@ using Prototype.Infra.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace Prototype.Infra.Data.UnitOfWork
 {
@@ -13,7 +14,6 @@ namespace Prototype.Infra.Data.UnitOfWork
         private bool disposed = false;
         private readonly PrototypeDataContext _context;
         private Dictionary<Type, object> repositories;
-
 
         public UnitOfWork(PrototypeDataContext context)
         {
@@ -37,6 +37,7 @@ namespace Prototype.Infra.Data.UnitOfWork
             return (IRepository<T>)repositories[type];
         }
 
+
         public void SaveChanges()
         {
             _context.SaveChanges();
@@ -49,6 +50,8 @@ namespace Prototype.Infra.Data.UnitOfWork
             GC.SuppressFinalize(this);
 
         }
+
+
 
         protected virtual void Dispose(bool disposing)
         {

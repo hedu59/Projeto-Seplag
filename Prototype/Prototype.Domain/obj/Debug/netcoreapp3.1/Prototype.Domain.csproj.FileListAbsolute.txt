@@ -31,3 +31,16 @@ D:\PROJETOS\Prototype\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototy
 D:\PROJETOS\Prototype\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.csproj.CopyComplete
 D:\PROJETOS\Prototype\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.dll
 D:\PROJETOS\Prototype\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.pdb
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\bin\Debug\netcoreapp3.1\Prototype.Domain.deps.json
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\bin\Debug\netcoreapp3.1\Prototype.Domain.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\bin\Debug\netcoreapp3.1\Prototype.Domain.pdb
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\bin\Debug\netcoreapp3.1\Prototype.Shared.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\bin\Debug\netcoreapp3.1\Prototype.Shared.pdb
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.csproj.AssemblyReference.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.AssemblyInfoInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.AssemblyInfo.cs
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.csproj.CoreCompileInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.csproj.CopyComplete
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Domain\obj\Debug\netcoreapp3.1\Prototype.Domain.pdb

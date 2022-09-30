@@ -1,20 +1,20 @@
 ﻿using Flunt.Notifications;
+using MediatR;
 using Prototype.Domain.Commands.Input.Documentos;
 using Prototype.Domain.Commands.Output;
 using Prototype.Domain.Entities;
-using Prototype.Domain.Enums;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using Prototype.Shared.Auth;
 using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Prototype.Domain.Handlers
 {
     public class DocumentoHandler : Notifiable,
-        ICommandHandler<CreateDocumentoCommand>,
-        ICommandHandler<UpdateDocumentoCommand>
+        IRequestHandler<CreateDocumentoCommand, ICommandResult>,
+        IRequestHandler<UpdateDocumentoCommand, ICommandResult>
     {
         private readonly IUnitOfWork _uow;
         private readonly IUser _user;
@@ -25,12 +25,18 @@ namespace Prototype.Domain.Handlers
             _user = user;
         }
 
-        public ICommandResult Handle(CreateDocumentoCommand command)
+        public async Task<ICommandResult> Handle(CreateDocumentoCommand command, CancellationToken cancellationToken)
         {
             try
             {
-              var servidor = _uow
-                   .GetRepository<BeneficioServidor>()
+
+                command.Validate();
+
+                if (!command.Valid)
+                    return new CommandResult(success: false, message: null, data: command.Notifications);
+
+                var servidor = _uow
+                   .GetRepository<Servidor>()
                    .GetFirstOrDefault(predicate: x => x.Id == command.ServidorId);
 
                 if(servidor != null)
@@ -42,17 +48,17 @@ namespace Prototype.Domain.Handlers
                         type: command.FileType,
                         date: DateTime.Now,
                         base64: command.FileAsBase64,
-                        fileByte: command.FileAsByteArray,
+                        fileByte:  command.FileAsByteArray,
                         categoria: command.Categoria)
                     { };
 
                     _uow.GetRepository<Documento>().Save(documento);
                     _uow.SaveChanges();
 
-                    return new CommandResult(success: true, message: "Arquivo salvo com sucesso", data: command);
+                    return await Task.FromResult(new CommandResult(success: true, message: "Arquivo salvo com sucesso", data: command));
                 }
 
-                return new CommandResult(success: false, message: "Servidor nao encontrado", data: command);
+                return  await Task.FromResult(new CommandResult(success: false, message: "Servidor nao encontrado", data: command));
 
             }
             catch (Exception ex)
@@ -61,13 +67,17 @@ namespace Prototype.Domain.Handlers
             }
         }
 
-
-        public ICommandResult Handle(UpdateDocumentoCommand command)
+        public async Task<ICommandResult> Handle(UpdateDocumentoCommand command, CancellationToken cancellationToken)
         {
             try
             {
+                command.Validate();
+
+                if (!command.Valid)
+                    return await Task.FromResult(new CommandResult(success: false, message: null, data: command.Notifications));
+
                 var servidor = _uow
-                    .GetRepository<BeneficioServidor>()
+                    .GetRepository<Servidor>()
                     .GetFirstOrDefault(predicate: x => x.Id == command.ServidorId);
 
                 if (servidor != null)
@@ -82,15 +92,14 @@ namespace Prototype.Domain.Handlers
                     _uow.GetRepository<Documento>().Update(entity: documento);
                     _uow.SaveChanges();
 
-
-                    return new CommandResult(success: true, message: "Servidor alterado com sucesso", data: command);
+                    return await Task.FromResult(new CommandResult(success: true, message: "Servidor alterado com sucesso", data: command));
                 }
 
-                return new CommandResult(success: false, message: "Servidor nao encontrada", data: command);
+                return await Task.FromResult(new CommandResult(success: false, message: "Servidor nao encontrada", data: command));
             }
             catch (Exception ex)
             {
-                return new CommandResult(success: false, message: ex.Message, data: null);
+                return await Task.FromResult(new CommandResult(success: false, message: ex.Message, data: null));
             }
         }
 

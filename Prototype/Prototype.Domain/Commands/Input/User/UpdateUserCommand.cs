@@ -1,13 +1,12 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
+using MediatR;
 using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Prototype.Domain.Commands.Input.User
 {
-    public class UpdateUserCommand : Notifiable, ICommand
+    public class UpdateUserCommand : Notifiable, ICommand, IRequest<string>
     {
         public Guid UserId { get; set; }
         public string Login { get; set; }

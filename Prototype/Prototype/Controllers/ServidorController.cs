@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Prototype.Application.Interfaces;
 using Prototype.Domain.Commands.Input.Servidores;
-using Prototype.Domain.Entities;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using System;
+using System.Threading.Tasks;
 
 namespace Prototype.Api.Controllers
 {
@@ -13,45 +13,34 @@ namespace Prototype.Api.Controllers
     [ApiController]
     public class ServidorController : ControllerBase
     {
+        private readonly IMediator _mediator;
         private readonly IServidorService _servidorService;
         private readonly IUnitOfWork _uow;
 
-        public ServidorController(IServidorService servidor, IUnitOfWork uow)
+        public ServidorController(IServidorService servidor, IUnitOfWork uow, IMediator mediator)
         {
             _servidorService = servidor;
             _uow = uow;
+            _mediator = mediator;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get(int pageIndex, int pageSize)
-        {
-            
-            var servidores = _uow.GetRepository<BeneficioServidor>()
-                .GetPagedList(predicate: x => x.Active == true, disableTracking: true, pageIndex: pageIndex, pageSize: pageSize,
-                include: x => x.Include(y => y.Documentos));
-           
-
-            return Ok(servidores);
-        }
-
+        public IActionResult Get(int? pageIndex, int? pageSize)
+         => Ok(_servidorService.ObterServidores(pageIndex ?? 1, pageSize ?? 10));
+        
         [HttpGet("{Id}")]
         public IActionResult GetById(Guid Id)
-        {
-
-            var servidor = _servidorService.ObterTramitacoesPorID(Id);
-
-            return Ok(servidor);
-        }
+        => Ok( _servidorService.ObterTramitacoesPorID(Id));
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Create([FromBody] CreateBeneficioServidorCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateServidorCommand command)
         {
 
             try
             {
-                var result = _servidorService.CreateServidor(command);
+                var result = await _mediator.Send(command);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -61,11 +50,11 @@ namespace Prototype.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] UpdateBeneficioServidorCommand command)
+        public async Task<IActionResult> Put([FromBody] UpdateServidorCommand command)
         {
             try
             {
-                var result = _servidorService.UpdateServidor(command);
+                var result = await _mediator.Send(command);
 
                 if (result.Success) return Ok(result);
                 return BadRequest(result);
@@ -77,12 +66,12 @@ namespace Prototype.Api.Controllers
 
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        [HttpDelete ]
+        public async Task<IActionResult> Delete(DeleteServidorCommand command)
         {
             try
             {
-                var result = _servidorService.DeleteServidor(id);
+                var result = await _mediator.Send(command);
 
                 if (result.Success) return Ok(result);
                 return BadRequest(result);

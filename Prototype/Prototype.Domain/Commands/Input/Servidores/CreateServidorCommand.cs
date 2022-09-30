@@ -1,5 +1,6 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
+using MediatR;
 using Prototype.Domain.Enums;
 using Prototype.Shared.Commands;
 using System;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace Prototype.Domain.Commands.Input.Servidores
 {
-    public class CreateBeneficioServidorCommand : Notifiable, ICommand
+    public class CreateServidorCommand : Notifiable, IRequest<ICommandResult>
     {
         public string Nome { get;  set; }
         public string CPF { get;  set; }

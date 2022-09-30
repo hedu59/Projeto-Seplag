@@ -17,45 +17,27 @@ namespace Prototype.Application.Services
 {
     public class ServidorService : IServidorService
     {
-
-        private readonly BeneficioServidorHandler _handler;
         private readonly IUnitOfWork _uow;
 
-        public ServidorService(BeneficioServidorHandler handler, IUnitOfWork uow)
+        public ServidorService( IUnitOfWork uow)
         {
-            _handler = handler;
+
             _uow = uow;
         }
 
-        public ICommandResult CreateServidor(CreateBeneficioServidorCommand command)
+        public IPagedList<Servidor> ObterServidores(int pageIndex, int pageSize)
         {
-            command.Validate();
+            var servidores =  _uow.GetRepository<Servidor>()
+                .GetPagedList(predicate: x => x.Active == true,  pageIndex: pageIndex, pageSize: pageSize,
+                include: x => x.Include(y => y.Documentos));
 
-            if (!command.Valid)
-                return new CommandResult(success: false, message: "Erro ao criar servidor", data: command.Notifications);
-
-            return _handler.Handle(command);
-
+            return servidores;
         }
 
-        public ICommandResult UpdateServidor(UpdateBeneficioServidorCommand command)
+        public Servidor ObterTramitacoesPorID(Guid Id)
         {
-            command.Validate();
-
-            if (!command.Valid)
-                return new CommandResult(success: false, message: null, data: command.Notifications);
-
-            return _handler.Handle(command);
-        }
-
-        public ICommandResult DeleteServidor(Guid id)
-        {
-            return _handler.Handle(id);
-        }
-
-        public BeneficioServidor ObterTramitacoesPorID(Guid Id)
-        {
-            var servidor = _uow.GetRepository<BeneficioServidor>().GetFirstOrDefault(
+            
+            var servidor = _uow.GetRepository<Servidor>().GetFirstOrDefault(
                predicate: x => x.Id == Id && x.Active,
                disableTracking: true);
 
@@ -70,6 +52,8 @@ namespace Prototype.Application.Services
 
             return servidor;
         }
+
+
 
         private List<ProcessoTramitacao> ConverterSetores(List<ProcessoTramitacao> tramitacao)
         {
@@ -120,37 +104,6 @@ namespace Prototype.Application.Services
 
             return tramitacao;
         }
-        private IPagedList<BeneficioServidor> ConverterSetores(IPagedList<BeneficioServidor> beneficio)
-        {
-
-            foreach (var item in beneficio.Items)
-            {
-                switch (item.SetorTramitacao)
-                {
-                    case Domain.Enums.ESetoresTramitacao.Setorial_Servidor:
-                        item.SetorDescricao = "Setorial Servidor";
-                        break;
-                    case Domain.Enums.ESetoresTramitacao.CPrev_Gestor:
-                        item.SetorDescricao = "CPrev Gestor";
-                        break;
-                    case Domain.Enums.ESetoresTramitacao.Secretario_SEPLAG:
-                        item.SetorDescricao = "Secretario SEPLAG";
-                        break;
-                    case Domain.Enums.ESetoresTramitacao.PGE_Analise:
-                        item.SetorDescricao = "PGE Analise";
-                        break;
-                    case Domain.Enums.ESetoresTramitacao.TCE_Gestor:
-                        item.SetorDescricao = "TCE Gestor";
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            return beneficio;
-        }
-
 
     }
 }

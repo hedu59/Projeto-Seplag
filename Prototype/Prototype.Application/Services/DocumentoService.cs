@@ -1,55 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.Documentos;
-using Prototype.Domain.Commands.Output;
+﻿using Prototype.Application.Interfaces;
 using Prototype.Domain.Entities;
 using Prototype.Domain.Enums;
-using Prototype.Domain.Handlers;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using Prototype.Domain.Interfaces.IUnitOfWork.Collections;
-using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Prototype.Application.Services
 {
     public class DocumentoService : IDocumentoService
     {
-        private readonly DocumentoHandler _handler;
+
         private readonly IUnitOfWork _uow;
 
-        public DocumentoService(DocumentoHandler handler, IUnitOfWork uow)
+        public DocumentoService( IUnitOfWork uow)
         {
-            _handler = handler;
             _uow = uow;
-        }
-
-        public ICommandResult CreateDocumento(CreateDocumentoCommand command)
-        {
-            command.Validate();
-
-            if (!command.Valid)
-                return new CommandResult(success: false, message: null, data: command.Notifications);
-
-            return _handler.Handle(command);
-
-        }
-
-        public ICommandResult UpdateDocumento(UpdateDocumentoCommand command)
-        {
-            command.Validate();
-
-            if (!command.Valid)
-                return new CommandResult(success: false, message: null, data: command.Notifications);
-
-            return _handler.Handle(command);
-        }
-
-        public ICommandResult DeleteDocumento(Guid id)
-        {
-            return _handler.Handle(id);
         }
 
         public IPagedList<Documento> ObterListDeDocumento(int pageIndex, int pageSize)
@@ -91,8 +56,6 @@ namespace Prototype.Application.Services
             {
                 throw;
             }
-           
-
         }
 
         public Documento ObterDocumentoPorID(Guid Id)
@@ -104,9 +67,7 @@ namespace Prototype.Application.Services
             return documento;
         }
 
-        #region MetodosAuxiliares
-    
-       
+
         private IPagedList<Documento> ConverterCategoria(IPagedList<Documento> documentos)
         {
 
@@ -134,8 +95,6 @@ namespace Prototype.Application.Services
             }
             return documentos;
         }
-
-        #endregion
 
     }
 }

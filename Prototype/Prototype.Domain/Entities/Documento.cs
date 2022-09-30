@@ -26,7 +26,7 @@ namespace Prototype.Domain.Entities
 
 
         public Guid ServidorId { get; private set; }
-        public BeneficioServidor Servidor { get; private set; }
+        public Servidor Servidor { get; private set; }
         public string FileName { get; private set; }
         public string FileSize { get; private set; }
         public string FileType { get; private set; }

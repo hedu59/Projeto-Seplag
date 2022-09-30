@@ -1,15 +1,13 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
-using Prototype.Domain.Entities;
+using MediatR;
 using Prototype.Domain.Enums;
 using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Prototype.Domain.Commands.Input.Documentos
 {
-    public class UpdateDocumentoCommand : Notifiable, ICommand
+    public class UpdateDocumentoCommand : Notifiable, IRequest<ICommandResult>
     {
         public Guid ServidorId { get; set; }
         public Guid DocumentoId { get; set; }

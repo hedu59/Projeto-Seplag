@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj": {}
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj": {}
   },
   "projects": {
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj": {
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj",
+        "projectUniqueName": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj",
         "projectName": "Prototype.Tests",
-        "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Tests\\obj\\",
+        "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Tests\\Prototype.Tests.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,10 +25,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://artifactory.softplan.com.br/artifactory/api/nuget/v3/nuget-local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -40,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "MSTest.TestAdapter": {
               "target": "Package",
@@ -88,19 +91,17 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

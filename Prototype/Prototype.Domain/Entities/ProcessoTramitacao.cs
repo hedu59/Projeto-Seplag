@@ -9,7 +9,7 @@ namespace Prototype.Domain.Entities
     public class ProcessoTramitacao : Entity
     {
         public Guid ServidorId { get; private set; }
-        public BeneficioServidor Documento { get; private set; }
+        public Servidor Documento { get; private set; }
         public DateTime DataTramitacao { get; private set; }
         public ESetoresTramitacao SetorOrigem { get; private set; }
         public ESetoresTramitacao SetorDestino { get; private set; }

@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Prototype.Infra.Data.Mappings.Entities
 {
-    public class BeneficioServidorMap : GenericMap<BeneficioServidor>, IEntityTypeConfiguration<BeneficioServidor>, IEntityMapping
+    public class BeneficioServidorMap : GenericMap<Servidor>, IEntityTypeConfiguration<Servidor>, IEntityMapping
     {
-        public void Configure(EntityTypeBuilder<BeneficioServidor> builder)
+        public void Configure(EntityTypeBuilder<Servidor> builder)
         {
             DefaultMap(builder: builder, tableName: "Servidores");
 

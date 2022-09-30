@@ -12,6 +12,7 @@ namespace Prototype.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class TokenController : ControllerBase
     {
         private readonly IUserService _userService;

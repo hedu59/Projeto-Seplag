@@ -1,16 +1,21 @@
-﻿using Prototype.Domain.Enums;
+﻿
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Prototype.Domain.Enums;
 using Prototype.Shared.Entities;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Prototype.Domain.Entities
 {
-    public class BeneficioServidor : Entity
+    public class Servidor : Entity
     {
-        public BeneficioServidor()
+        public Servidor()
         {
 
         }
-        public BeneficioServidor(string nome, string cpf, string orgao, string matricula, ESetoresTramitacao setor)
+        public Servidor(string nome, string cpf, string orgao, string matricula, ESetoresTramitacao setor)
         {
             Nome = nome;
             CPF = cpf;
@@ -29,11 +34,7 @@ namespace Prototype.Domain.Entities
         public IEnumerable<ProcessoTramitacao> Tramitacoes { get; set; }
 
 
-        public void UpdateServidor(ESetoresTramitacao tramitacao)
-        {
+        public void UpdateServidor(ESetoresTramitacao tramitacao) =>SetorTramitacao = tramitacao;
 
-            SetorTramitacao = tramitacao;
-
-        }  
     }
 }

@@ -1,5 +1,5 @@
-﻿using Prototype.Shared.Commands;
-
+﻿using Microsoft.AspNetCore.Mvc;
+using Prototype.Shared.Commands;
 namespace Prototype.Domain.Commands.Output
 {
     public class CommandResult : ICommandResult

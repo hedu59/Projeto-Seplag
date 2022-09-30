@@ -1,99 +1,129 @@
 ﻿using Flunt.Notifications;
+using MediatR;
 using Prototype.Domain.Commands.Input.Servidores;
 using Prototype.Domain.Commands.Output;
 using Prototype.Domain.Entities;
 using Prototype.Domain.Enums;
 using Prototype.Domain.Interfaces.IUnitOfWork;
+using Prototype.Domain.Interfaces.Repositories;
 using Prototype.Shared.Auth;
 using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Prototype.Domain.Handlers
 {
     public class BeneficioServidorHandler : Notifiable,
-        ICommandHandler<CreateBeneficioServidorCommand>,
-        ICommandHandler<UpdateBeneficioServidorCommand>
+        IRequestHandler<CreateServidorCommand, ICommandResult>,
+        IRequestHandler<UpdateServidorCommand, ICommandResult>,
+        IRequestHandler<DeleteServidorCommand, ICommandResult>
     {
         private readonly IUnitOfWork _uow;
         private readonly IUser _user;
-
-        public BeneficioServidorHandler(IUnitOfWork uow, IUser user)
+        private readonly ITransacaoMongoRepository _mongoRepository;
+        public BeneficioServidorHandler(IUnitOfWork uow, IUser user, ITransacaoMongoRepository mongoRepository)
         {
             _uow = uow;
             _user = user;
+            _mongoRepository = mongoRepository;
         }
 
-        public ICommandResult Handle(CreateBeneficioServidorCommand command)
+        public async Task<ICommandResult> Handle(CreateServidorCommand command, CancellationToken cancellationToken)
         {
             try
-            {
-                var beneficio = new BeneficioServidor(nome: command.Nome, cpf: command.CPF, orgao: command.Orgao, matricula: command.Matricula, ESetoresTramitacao.Setorial_Servidor);
-                _uow.GetRepository<BeneficioServidor>()
-                .Save(beneficio);
-                _uow.SaveChanges();
+            {             
 
+                command.Validate();
+
+                if (!command.Valid)
+                    return new CommandResult(success: false, message: "Erro ao criar servidor", data: command.Notifications);
+
+                var beneficio = new Servidor(nome: command.Nome, cpf: command.CPF, orgao: command.Orgao, matricula: command.Matricula, ESetoresTramitacao.Setorial_Servidor);
+   
+                _uow.GetRepository<Servidor>()
+                .Save(beneficio);  
                 GravarTramitacao(beneficio, ESetoresTramitacao.Setorial_Servidor, ESetoresTramitacao.Setorial_Servidor);
+                
+                _uow.SaveChanges();
+                await CriarLog(beneficio.Id, "Servidor Criado");
 
-                return new CommandResult(success: true, message: "Servidor salvo com sucesso", data: command.Notifications);
+                return await Task.FromResult( new CommandResult(success: true, message: "Servidor salvo com sucesso", data: beneficio));
             }
             catch (Exception ex)
             {
-                return new CommandResult(success: false, message: ex.Message, data: null);
+                new CommandResult(success: false, message: ex.Message, data: null);
+                return await Task.FromResult(new CommandResult(success: false, message: "Erro ao salvar Servidor.", data: command.Notifications));
             }
         }
 
-        public ICommandResult Handle(UpdateBeneficioServidorCommand command)
+        private async Task CriarLog(Guid servidorId, string obsevacao)
+        {
+            var log = new LogTransacao() { Observacao = obsevacao, ServidorId = servidorId };
+             await _mongoRepository.CreateAsync(log);
+        }
+
+        public  async Task<ICommandResult> Handle(UpdateServidorCommand command, CancellationToken cancellationToken)
         {
             try
             {
+
+                command.Validate();
+
+                if (!command.Valid)
+                    return new CommandResult(success: false, message: null, data: command.Notifications);
+
+
                 var servidor = _uow
-                    .GetRepository<BeneficioServidor>()
+                .GetRepository<Servidor>()
                     .GetFirstOrDefault(predicate: x => x.Id == command.ServidorId);
 
                 if (servidor != null)
                 {
                     var setorAnterior = servidor.SetorTramitacao;
-                    
+
                     servidor.UpdateServidor(command.Tramitacao);
-                    _uow.GetRepository<BeneficioServidor>().Update(entity: servidor);
-                    _uow.SaveChanges();
+                    _uow.GetRepository<Servidor>().Update(entity: servidor);
 
                     GravarTramitacao(servidor, setorAnterior, command.Tramitacao);
 
-                    return new CommandResult(success: true, message: "Servidor alterado com sucesso", data: command);
+                    _uow.SaveChanges();
+
+                    await CriarLog(servidor.Id, "Servidor Alterado");
+
+                    return  await Task.FromResult(new CommandResult(success: true, message: "Servidor alterado com sucesso", data: command));
                 }
 
-                return new CommandResult(success: false, message: "Servidor nao encontrada", data: command);
+                return  await Task.FromResult(new CommandResult(success: false, message: "Servidor nao encontrado", data: command));
             }
             catch (Exception ex)
             {
-                return new CommandResult(success: false, message: ex.Message, data: null);
+                return await Task.FromResult(new CommandResult(success: false, message: ex.Message, data: null));
             }
         }
-
-        public ICommandResult Handle(Guid id)
+        public async Task<ICommandResult> Handle(DeleteServidorCommand command, CancellationToken cancellationToken)
         {
             try
             {
-                var user = _uow.GetRepository<User>().GetFirstOrDefault(predicate: x => x.Id == id);
+                var servidor = _uow.GetRepository<User>().GetFirstOrDefault(predicate: x => x.Id == command.ServidorId);
 
-                user.Disable();
+                servidor.Disable();
 
-                _uow.GetRepository<User>().Update(entity: user);
+                _uow.GetRepository<User>().Update(entity: servidor);
 
                 _uow.SaveChanges();
 
-                return new CommandResult(success: true, message: "Usuário removido com sucesso", data: null);
+                await CriarLog(servidor.Id, "Servidor Deletado");
+
+                return await Task.FromResult(new CommandResult(success: true, message: "Usuário removido com sucesso", data: null));
             }
             catch (Exception ex)
             {
-                return new CommandResult(success: false, message: ex.Message, data: null);
+                return await Task.FromResult(new CommandResult(success: false, message: ex.Message, data: null));
             }
         }
 
-        private void GravarTramitacao(BeneficioServidor beneficio, ESetoresTramitacao setorAnterior, ESetoresTramitacao tramitacao)
+        private void GravarTramitacao(Servidor beneficio, ESetoresTramitacao setorAnterior, ESetoresTramitacao tramitacao)
         {
             try
             {
@@ -109,14 +139,13 @@ namespace Prototype.Domain.Handlers
 
                 _uow.GetRepository<ProcessoTramitacao>()
                     .Save(entity: documentoTramitacao);
-
-                _uow.SaveChanges();
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.Message, ex);
             }
 
         }
+
     }
 }

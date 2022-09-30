@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj": {}
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj": {}
   },
   "projects": {
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj": {
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj",
+        "projectUniqueName": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj",
         "projectName": "Prototype.Domain",
-        "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\obj\\",
+        "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,13 +25,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://artifactory.softplan.com.br/artifactory/api/nuget/v3/nuget-local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj": {
-                "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj"
+              "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj": {
+                "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj"
               }
             }
           }
@@ -44,10 +46,19 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Flunt": {
               "target": "Package",
               "version": "[1.0.5, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
             },
             "Microsoft.AspNetCore.Mvc.Formatters.Json": {
               "target": "Package",
@@ -60,6 +71,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.17.1, )"
             },
             "Npgsql": {
               "target": "Package",
@@ -80,36 +95,34 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj": {
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj",
+        "projectUniqueName": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj",
         "projectName": "Prototype.Infra.Data",
-        "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Infra.Data\\obj\\",
+        "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Infra.Data\\Prototype.Infra.Data.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Infra.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -117,13 +130,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://artifactory.softplan.com.br/artifactory/api/nuget/v3/nuget-local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj": {
-                "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj"
+              "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj": {
+                "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Domain\\Prototype.Domain.csproj"
               }
             }
           }
@@ -136,40 +151,29 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[10.1.1, )"
-            },
-            "EntityFramework": {
-              "target": "Package",
-              "version": "[6.4.4, )"
-            },
-            "Microsoft.AspNetCore.Mvc.Formatters.Json": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.10, )"
+              "version": "[3.1.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.29, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.10, )"
+              "version": "[3.1.29, )"
             },
-            "Microsoft.Extensions.Options": {
+            "MongoDB.Driver": {
               "target": "Package",
-              "version": "[3.1.10, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[2.17.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -182,36 +186,34 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj": {
+    "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj",
+        "projectUniqueName": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj",
         "projectName": "Prototype.Shared",
-        "projectPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "D:\\PROJETOS\\Prototype\\Prototype\\Prototype.Shared\\obj\\",
+        "projectPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\Prototype.Shared.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Projetos\\Estudo\\ProjetoSeplag\\Prototype\\Prototype.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -219,10 +221,12 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://artifactory.softplan.com.br/artifactory/api/nuget/v3/nuget-local": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -234,7 +238,20 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.2.2, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
             "Microsoft.AspNetCore.Mvc.Formatters.Json": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -266,19 +283,17 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

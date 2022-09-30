@@ -21,3 +21,13 @@ D:\PROJETOS\Prototype\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototy
 D:\PROJETOS\Prototype\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.dll
 D:\PROJETOS\Prototype\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.pdb
 D:\PROJETOS\Prototype\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.csprojAssemblyReference.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\bin\Debug\netcoreapp3.1\Prototype.Shared.deps.json
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\bin\Debug\netcoreapp3.1\Prototype.Shared.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\bin\Debug\netcoreapp3.1\Prototype.Shared.pdb
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.csproj.AssemblyReference.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.AssemblyInfoInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.AssemblyInfo.cs
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.csproj.CoreCompileInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype.Shared\obj\Debug\netcoreapp3.1\Prototype.Shared.pdb

@@ -10,12 +10,7 @@ namespace Prototype.Application.Interfaces
 {
     public interface IDocumentoService
     {
-        ICommandResult CreateDocumento(CreateDocumentoCommand command);
-
-        ICommandResult UpdateDocumento(UpdateDocumentoCommand command);
-
-        ICommandResult DeleteDocumento(Guid id);
-
+      
         IPagedList<Documento> ObterListDeDocumento(int pageIndex, int pageSize);
 
         IPagedList<Documento> ObterListDeDocumentoPorServidor(Guid ServidorId, int pageIndex, int pageSize);

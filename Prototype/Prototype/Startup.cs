@@ -1,8 +1,10 @@
 
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +16,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Prototype.Api.DependencyInjection;
+using Prototype.Api.ServicesResolve;
+using Prototype.Domain.Commands.Input.Servidores;
+using Prototype.Domain.Entities;
 using Prototype.Domain.Interfaces;
 using Prototype.Infra.Data;
 using Prototype.Infra.Data.Interfaces;
 using Prototype.Shared.Auth;
 using System;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +44,7 @@ namespace Prototype
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",builder => 
+                options.AddPolicy("CorsPolicy", builder =>
                 builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
@@ -49,71 +55,16 @@ namespace Prototype
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Prototype API", Version = "v1" });
             });
 
-
-            #region Token
-            services.AddAuthorization(auth =>
-            {
-                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                    .RequireAuthenticatedUser().Build());
-            });
-
-            services.AddDbContext<PrototypeDataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
-            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("TokenConfig:HashKey").Value);
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-
-                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = "prototype",
-                    ValidAudience = "prototype",
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
-                };
-
-
-                options.Events = new JwtBearerEvents
-
-                {
-                    OnAuthenticationFailed = context =>
-                    {
-                        Console.WriteLine("Token Inválido...:" + context.Exception.Message.ToString());
-                        return Task.CompletedTask;
-                    },
-
-                    OnTokenValidated = context =>
-                    {
-                        Console.WriteLine("Token válido...:" + context.SecurityToken);
-                        return Task.CompletedTask;
-                    }
-
-                };
-
-
-            });
-
-            #endregion
-
-            
-
-            DependencyInjection.ResoluteDependencies(services);
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver(); });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0); 
-            services.AddResponseCompression();
-
-            services.AddHttpContextAccessor(); 
+            services.AddMediatR(typeof(Startup));
+            services.AddHandlerDependency();
+            services.AddTokenDependency(Configuration);
+            services.AddConfiguration(Configuration);    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

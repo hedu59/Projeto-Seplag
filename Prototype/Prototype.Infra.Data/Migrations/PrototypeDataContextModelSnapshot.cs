@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Prototype.Infra.Data;
 
 namespace Prototype.Infra.Data.Migrations
@@ -15,53 +15,53 @@ namespace Prototype.Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("ProductVersion", "3.1.29")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Prototype.Domain.Entities.BeneficioServidor", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnName("CPF")
-                        .HasColumnType("character varying(11)")
+                        .HasColumnType("nvarchar(11)")
                         .HasMaxLength(11);
 
                     b.Property<string>("Matricula")
                         .IsRequired()
                         .HasColumnName("Matricula")
-                        .HasColumnType("character varying(40)")
+                        .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnName("Nome")
-                        .HasColumnType("character varying(80)")
+                        .HasColumnType("nvarchar(80)")
                         .HasMaxLength(80);
 
                     b.Property<string>("Orgao")
                         .IsRequired()
                         .HasColumnName("Orgao")
-                        .HasColumnType("character varying(80)")
+                        .HasColumnType("nvarchar(80)")
                         .HasMaxLength(80);
 
                     b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SetorDescricao")
                         .HasColumnName("SetorDescricao")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SetorTramitacao")
                         .HasColumnName("Setor_Atual")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -72,61 +72,61 @@ namespace Prototype.Infra.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<Guid?>("BeneficioServidorId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Categoria")
                         .HasColumnName("Categoria")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("CategoriaDescicao")
                         .HasColumnName("CategoriaDescicao")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileAsBase64")
                         .IsRequired()
                         .HasColumnName("Arquivo_Base64")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("FileAsByteArray")
                         .IsRequired()
                         .HasColumnName("Bytes")
-                        .HasColumnType("bytea");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnName("Nome_Arquivo")
-                        .HasColumnType("character varying(200)")
+                        .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
                     b.Property<string>("FileSize")
                         .IsRequired()
                         .HasColumnName("Tamanho_Arquivo")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileType")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Tipo")
-                        .HasColumnType("text")
+                        .HasColumnType("nvarchar(max)")
                         .HasDefaultValue("application/pdf");
 
                     b.Property<DateTime>("LastModifiedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Ultima_Modificacao")
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2020, 11, 17, 18, 38, 51, 438, DateTimeKind.Local).AddTicks(2590));
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 9, 30, 9, 42, 25, 492, DateTimeKind.Local).AddTicks(6106));
 
                     b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("ServidorId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -141,46 +141,46 @@ namespace Prototype.Infra.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("DataTramitacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Data_Tramitacao")
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2020, 11, 17, 18, 38, 51, 447, DateTimeKind.Local).AddTicks(1757));
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2022, 9, 30, 9, 42, 25, 501, DateTimeKind.Local).AddTicks(4188));
 
                     b.Property<Guid?>("DocumentoId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("ServidorId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SetorDestino")
                         .HasColumnName("Setor_Destino")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("SetorDestinoDescricao")
                         .HasColumnName("Setor_Destino_Descricao")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SetorOrigem")
                         .HasColumnName("Setor_Origem")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("SetorOrigemDescricao")
                         .HasColumnName("Setor_Origem_Descricao")
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsuarioMovimentacao")
                         .IsRequired()
                         .HasColumnName("Usuario")
-                        .HasColumnType("character varying(50)")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -196,16 +196,16 @@ namespace Prototype.Infra.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Email")
-                        .HasColumnType("character varying(100)")
+                        .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100)
                         .HasDefaultValue("admin@prototype.com");
 
@@ -213,7 +213,7 @@ namespace Prototype.Infra.Data.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Login")
-                        .HasColumnType("character varying(50)")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50)
                         .HasDefaultValue("Admin");
 
@@ -221,12 +221,12 @@ namespace Prototype.Infra.Data.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Password")
-                        .HasColumnType("character varying(15)")
+                        .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15)
                         .HasDefaultValue("123456");
 
                     b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
