@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  mssql:
+    image: jeugenio/mssql-2017-express 
+    container_name: mssql-2017-express
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Secret@123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+  mongodb:
+     container_name: mongodb
+     image: mongo:latest
+     restart: unless-stopped
+     ports:
+      - 27017:27017    
+
+volumes:
+    db:     
