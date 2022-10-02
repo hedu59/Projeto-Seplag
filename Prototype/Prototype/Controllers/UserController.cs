@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Prototype.Application.Commands.Input.User;
 using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.User;
-using Prototype.Domain.Entities;
-using Prototype.Domain.Interfaces;
+using System;
 
 namespace Prototype.Api.Controllers
 {

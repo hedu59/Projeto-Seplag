@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Prototype.Application.Commands.Input.Documentos;
 using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.Documentos;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using System;
 using System.Threading.Tasks;

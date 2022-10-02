@@ -1,17 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.Servidores;
-using Prototype.Domain.Commands.Output;
 using Prototype.Domain.Entities;
 using Prototype.Domain.Enums;
-using Prototype.Domain.Handlers;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using Prototype.Domain.Interfaces.IUnitOfWork.Collections;
-using Prototype.Shared.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Prototype.Application.Services
 {

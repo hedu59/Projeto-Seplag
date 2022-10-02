@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Prototype.Application.Commands.Input.Servidores;
 using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.Servidores;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using System;
 using System.Threading.Tasks;
@@ -37,7 +37,6 @@ namespace Prototype.Api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([FromBody] CreateServidorCommand command)
         {
-
             try
             {
                 var result = await _mediator.Send(command);

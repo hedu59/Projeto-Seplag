@@ -1,10 +1,6 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using Prototype.Shared.Entities;
 
 namespace Prototype.Domain.Entities
 {
@@ -19,9 +15,7 @@ namespace Prototype.Domain.Entities
         [BsonId()]
         public ObjectId Id { get; set; }
         public Guid ServidorId { get; set; }
-
         public DateTime RegisterDate { get; set; }
-
         public string Observacao { get; set; }
  
     }

@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Prototype.Domain.Commands.Input.Documentos;
-using Prototype.Domain.Commands.Input.Servidores;
-using Prototype.Domain.Commands.Input.User;
+using Prototype.Application.Commands.Input.Documentos;
+using Prototype.Application.Commands.Input.Servidores;
+using Prototype.Application.Commands.Input.User;
 using System.Reflection;
 
 namespace Prototype.Api.ServicesResolve

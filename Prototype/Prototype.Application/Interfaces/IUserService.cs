@@ -1,10 +1,6 @@
-﻿using Prototype.Domain.Commands.Input.User;
-using Prototype.Domain.Entities;
-using Prototype.Shared;
+﻿using Prototype.Application.Commands.Input.User;
 using Prototype.Shared.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Prototype.Application.Interfaces
 {

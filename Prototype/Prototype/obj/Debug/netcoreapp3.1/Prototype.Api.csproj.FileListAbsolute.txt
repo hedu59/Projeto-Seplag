@@ -542,6 +542,7 @@ C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\New
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Npgsql.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\SharpCompress.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -560,6 +561,7 @@ C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Sys
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll

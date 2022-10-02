@@ -1,14 +1,12 @@
 ﻿
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Prototype.Application.Commands.Input.User;
+using Prototype.Application.Handlers;
 using Prototype.Application.Interfaces;
-using Prototype.Domain.Commands.Input.User;
 using Prototype.Domain.Commands.Output;
 using Prototype.Domain.Entities;
-using Prototype.Domain.Handlers;
 using Prototype.Domain.Interfaces.IUnitOfWork;
-using Prototype.Domain.Models;
-using Prototype.Shared;
 using Prototype.Shared.Commands;
 using System;
 using System.IdentityModel.Tokens.Jwt;

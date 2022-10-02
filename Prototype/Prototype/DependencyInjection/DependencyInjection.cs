@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Prototype.Application.Filas;
+using Prototype.Application.Handlers;
 using Prototype.Application.Interfaces;
+using Prototype.Application.Interfaces.Filas;
 using Prototype.Application.Services;
 using Prototype.Domain.Entities;
-using Prototype.Domain.Handlers;
 using Prototype.Domain.Interfaces;
 using Prototype.Domain.Interfaces.IUnitOfWork;
 using Prototype.Domain.Interfaces.Repositories;
@@ -27,11 +29,17 @@ namespace Prototype.Api.DependencyInjection
             ServicesDependencies(services);
             HandlresDependecies(services);
             MongoDependencies(services);
+            FilasDependencies(services);
         }
 
         static void MongoDependencies(IServiceCollection services)
         {
             services.AddScoped<ITransacaoMongoRepository, TransacaoMongoRepository>();
+        }
+
+        static void FilasDependencies(IServiceCollection services)
+        {
+            services.AddScoped<ILogTransacaoMensagem, LogTransacaoMensagem>();
         }
 
         static void ServicesDependencies(IServiceCollection services)
@@ -45,7 +53,7 @@ namespace Prototype.Api.DependencyInjection
 
         static void HandlresDependecies(IServiceCollection services)
         {
-            services.AddScoped<BeneficioServidorHandler, BeneficioServidorHandler>();
+            services.AddScoped<ServidorHandler, ServidorHandler>();
             services.AddScoped<DocumentoHandler, DocumentoHandler>();
         }
     }

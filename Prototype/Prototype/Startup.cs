@@ -1,32 +1,12 @@
 
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json;
-using Prototype.Api.DependencyInjection;
 using Prototype.Api.ServicesResolve;
-using Prototype.Domain.Commands.Input.Servidores;
-using Prototype.Domain.Entities;
-using Prototype.Domain.Interfaces;
-using Prototype.Infra.Data;
-using Prototype.Infra.Data.Interfaces;
-using Prototype.Shared.Auth;
-using System;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prototype
 {
