@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Prototype.Api.DependencyInjection;
 using Prototype.Infra.Data;
-using Prototype.Infra.Data.MongoConfiguration;
 
 namespace Prototype.Api.ServicesResolve
 {
@@ -16,7 +15,6 @@ namespace Prototype.Api.ServicesResolve
         internal static IServiceCollection AddConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             ResolveDependencyInjection.ResolveDependencies(services);
-            services.Configure<DbConfiguration>(configuration.GetSection("MongoDbConnection"));
             services.AddDbContext<PrototypeDataContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc().AddNewtonsoftJson(options => { options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver(); });

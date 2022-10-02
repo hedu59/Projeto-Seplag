@@ -6,7 +6,6 @@ using Prototype.Domain.Commands.Output;
 using Prototype.Domain.Entities;
 using Prototype.Domain.Enums;
 using Prototype.Domain.Interfaces.IUnitOfWork;
-using Prototype.Domain.Interfaces.Repositories;
 using Prototype.Shared.Auth;
 using Prototype.Shared.Commands;
 using System;
@@ -22,13 +21,11 @@ namespace Prototype.Application.Handlers
     {
         private readonly IUnitOfWork _uow;
         private readonly IUser _user;
-        private readonly ITransacaoMongoRepository _mongoRepository;
-        private readonly ILogTransacaoMensagem _logTransacao;
-        public ServidorHandler(IUnitOfWork uow, IUser user, ITransacaoMongoRepository mongoRepository, ILogTransacaoMensagem logTransacao)
+        private readonly ILogTransacaoProducer _logTransacao;
+        public ServidorHandler(IUnitOfWork uow, IUser user, ILogTransacaoProducer logTransacao)
         {
             _uow = uow;
             _user = user;
-            _mongoRepository = mongoRepository;
             _logTransacao = logTransacao;
         }
 

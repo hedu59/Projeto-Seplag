@@ -466,6 +466,12 @@ D:\PROJETOS\Prototype\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.
 D:\PROJETOS\Prototype\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.CopyComplete
 D:\PROJETOS\Prototype\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.dll
 D:\PROJETOS\Prototype\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.pdb
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.AssemblyReference.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.AssemblyInfoInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.AssemblyInfo.cs
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.CoreCompileInputs.cache
+C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Prototype.Api.StaticWebAssets.xml
@@ -644,13 +650,6 @@ C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Pro
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Prototype.Infra.Data.pdb
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Prototype.Domain.pdb
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\bin\Debug\netcoreapp3.1\Prototype.Shared.pdb
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.AssemblyReference.cache
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.AssemblyInfoInputs.cache
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.AssemblyInfo.cs
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.CoreCompileInputs.cache
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\staticwebassets\Prototype.Api.StaticWebAssets.Manifest.cache
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.RazorTargetAssemblyInfo.cache
 C:\Projetos\Estudo\ProjetoSeplag\Prototype\Prototype\obj\Debug\netcoreapp3.1\Prototype.Api.csproj.CopyComplete

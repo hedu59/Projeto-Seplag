@@ -11,7 +11,13 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Swashbuckle.AspNetCore.SwaggerGen")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("BackgroundPrototype")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyProductAttribute("BackgroundPrototype")]
+[assembly: System.Reflection.AssemblyTitleAttribute("BackgroundPrototype")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

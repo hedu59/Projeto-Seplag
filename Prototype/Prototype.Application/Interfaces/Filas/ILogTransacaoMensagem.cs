@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Prototype.Application.Interfaces.Filas
 {
-    public  interface ILogTransacaoMensagem
+    public  interface ILogTransacaoProducer
     {
         void ProduzirTransacao(LogTransacao message);
     }

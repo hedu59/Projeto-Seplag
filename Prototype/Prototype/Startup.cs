@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Prototype.Api.ServicesResolve;
+using Prototype.Application.Filas.Configuration;
 
 namespace Prototype
 {
@@ -35,6 +36,7 @@ namespace Prototype
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Prototype API", Version = "v1" });
             });
 
+            services.Configure<RabbitMqConfiguration>(Configuration.GetSection("RabbitMqConfig"));
             services.AddMediatR(typeof(Startup));
             services.AddHandlerDependency();
             services.AddTokenDependency(Configuration);
